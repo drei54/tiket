@@ -1,7 +1,10 @@
 package com.tiket.test.senior.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiket.test.senior.model.Customer;
@@ -55,8 +58,14 @@ public class ReactiveController {
     }
 
 	@GetMapping("/reactive/order")
-    public Flux<Order> orderIndex() {
-        return orderReactiveRepository.findAll();
+    public Flux<Order> orderIndex(
+    		@RequestParam(value = "page", defaultValue = "0") long page,
+            @RequestParam(value = "size", defaultValue = "1") long size
+            ) {
+		Flux<Order> orders=  orderReactiveRepository.findAll()
+//                .sort(comparing(Order::getCreatedDate).reversed())
+                .skip(page * size).take(size);
+		return orders;
     }
 
 	@GetMapping("/reactive/order-detail")
