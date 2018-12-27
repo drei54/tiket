@@ -1,0 +1,249 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html id="html-login" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tiket - Order</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Tiket" />
+ <!-- Bootstrap Core CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel='stylesheet' type='text/css' />
+<!-- jQuery -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<style>
+.form-control-plaintext{
+	font-weight:bold; 
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <center><h1>Order</h1></center>
+  <hr/>
+  <br/>
+  <!-- <p>This is some text.</p>  -->
+<div class="row">
+  	<div class="col-sm-6">
+		<form>
+		  <div class="form-group row">
+		    <label for="staticEmail" class="col-sm-4 col-form-label text-right">Customer:</label>
+		    <div class="col-sm-8">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="customer" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-4 col-form-label text-right">Employee:</label>
+		    <div class="col-sm-8">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="employee" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-4 col-form-label text-right">Shipping Method:</label>
+		    <div class="col-sm-8">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="shippingMethod" value="-"></strong>
+		    </div>
+		  </div>
+		</form>		
+	</div>
+	
+	<div class="col-sm-6">
+		<form class="text-right">
+		  <div class="form-group row">
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">Order ID:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="orderId" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">Order Date:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="orderDate" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">PO Number:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="poNumber" value="-"></strong>
+		    </div>
+		  </div>
+		</form>
+	</div>
+
+	<div class="col-sm-12">
+		<table class="table table-bordered">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Product</th>
+		      <th scope="col">Quantity</th>
+		      <th scope="col">Unit Price</th>
+		      <th scope="col">Discount</th>
+		      <th scope="col">Extended Price</th>
+		    </tr>
+		  </thead>
+		  <tbody id="orderDetail">
+		    <tr>
+		      <td colspan="6"><center>No Data</center></td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>	
+	
+	
+	<div class="col-sm-6">
+		<form class="">
+			
+		  <div class="form-group row">
+		    <label for="staticEmail" class="col-sm-4 col-form-label text-right">Ship Date:</label>
+		    <div class="col-sm-8">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="shipDate" value="-"></strong>
+		    </div>
+		  </div>
+		</form>
+	</div>
+	
+	<div class="col-sm-6">
+		<form class="text-right">
+		  <div class="form-group row">
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">Order SubTotal:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="subTotal" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">Taxes:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="taxes" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">Shipping & Handling:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="shippingAndHandling" value="-"></strong>
+		    </div>
+		    <label for="staticEmail" class="col-sm-8 col-form-label text-right">Order Total:</label>
+		    <div class="col-sm-4">
+		      <strong><input type="text" readonly class="form-control-plaintext" id="orderTotal" value="-"></strong>
+		    </div>
+		  </div>
+		</form>
+	</div>
+	
+	<div class="col-sm-12 text-center">
+		<nav aria-label="Page navigation example\">
+		  <ul class="pagination" style="display:-webkit-inline-box">
+		    <li class="page-item">
+		      <a class="page-link" aria-label="First">
+		        <span aria-hidden="true">&lt;&lt;</span>
+		        <span class="sr-only">First</span>
+		      </a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" aria-label="Previous">
+		        <span aria-hidden="true">&lt;</span>
+		        <span class="sr-only">Previous</span>
+		      </a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" aria-label="Next">
+		        <span aria-hidden="true">&gt;</span>
+		        <span class="sr-only">Next</span>
+		      </a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" aria-label="Last">
+		        <span aria-hidden="true">&gt;&gt;</span>
+		        <span class="sr-only">Last</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+	</div>
+	
+	</div>
+  
+</div>
+</body>
+</html>
+
+<script type="text/javascript" th:inline="javascript">
+$(document).ready(function(){
+	var page = [[${page}]];
+	var url = window.location.protocol+"//"+window.location.host+"/order?size=1&page="+page;
+	var totalPages = 0;
+
+	$.ajax({
+			url: url,
+		    type: "GET", 
+			datatype:'json',
+			contentType: "application/json; charset=utf-8",
+		    success: function(res){
+		 		console.log(res);
+		 		if(res.data.length > 0){
+		 			var data = res.data[0];
+		 			var customer = data.customer;
+		 			var employee = data.employee;
+		 			var shippingMethod = res.data[0].shippingMethod;
+		 			$("#customer").val(customer.firstName+" "+customer.lastName);
+		 			$("#employee").val(employee.firstName+" "+employee.lastName);
+		 			$("#shippingMethod").val(shippingMethod.shippingMethod);
+		 			$("#orderId").val(data.orderId);
+		 			$("#orderDate").val(dateFormat(data.orderDate));
+		 			$("#poNumber").val(data.purchaseOrderNumber);
+		 			$("#shipDate").val(dateFormat(data.shipDate));
+		 			$("#subTotal").val("$"+data.subTotal);
+		 			$("#taxes").val("$"+data.taxes);
+		 			var shippingCost = (typeof data.freightCharge !== 'undefined')? data.freightCharge : 0;
+		 			$("#shippingAndHandling").val("$"+shippingCost);
+		 			$("#orderTotal").val("$"+data.orderTotal);
+		 			var row = "";
+		 			$(data.orderDetails).each(function( i,o ) {
+		 				console.log(o);
+		 				var extendedPrice = (o.unitPrice - (o.unitPrice * o.discount / 100)) * o.quantity ;
+		 				row += "<tr>"+
+						  			"<td>"+(i+1)+"</td>"+
+		 				  			"<td>"+o.product.productName	+"</td>"+
+		 				  			"<td><span style=\"float:right;\">"+o.quantity+"</span></td>"+
+		 				  			"<td><span style=\"float:right;\">$"+o.unitPrice+"</span></td>"+
+		 				  			"<td><span style=\"float:right;\">"+o.discount+"%</span></td>"+
+		 				  			"<td><span style=\"float:right;\">$"+extendedPrice+"</span></td>"+
+		 				  			"</tr>";
+		 			});
+		 			row = (row == "") ? "<tr><td colspan=\"6\"><center>No Data</center></td></tr>" : row; 
+		 			$("#orderDetail").html(row);
+		 			totalPages = res.pagination.totalPages;
+		 		}
+		 		
+			},
+			error: function(er){
+				console.log(er);
+			}
+	 });
+
+	 function dateFormat(str){
+		 if((typeof str !== 'undefined')){
+			 var parts = str.split("T");
+			 var part = parts[0].split("-");
+			 return part[2]+"-"+part[1]+"-"+part[0];
+		 }else{
+			 return "-";
+		 }
+	 }
+	 
+	 $(".page-link").click(function(){
+		 var nav = $(this).attr('aria-label');
+		 var url = window.location.protocol+"//"+window.location.host+"?page=";
+		 var nextPage = 1;			
+		 if(nav == 'First'){
+			 nextPage = 0;
+		 }else if(nav == 'Previous'){
+			 nextPage = (page - 1);
+		 }else if(nav == 'Next'){
+			 nextPage = (page + 1);
+		 }else if(nav == 'Last'){
+			 nextPage = totalPages;
+		 }
+		 console.log(url+nextPage); 
+		 if(nextPage >= 0 && nextPage < totalPages){
+			 window.location.href = url+nextPage;			 
+		 }
+	 });
+	/*]]>*/
+});
+</script>
