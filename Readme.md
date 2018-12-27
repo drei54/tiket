@@ -1,11 +1,11 @@
 ------------------------------------
-BASIC
+A
 --------------------------------
 /tiket-test/src/main/java/com/tiket/test/basic/SoalA.java
 /tiket-test/src/main/java/com/tiket/test/basic/SoalB.java
 
 ------------------------------------
-INTERMEDIATE
+B
 --------------------------------
 #Index page
 http://localhost:8080
@@ -75,7 +75,7 @@ ORDER BY tanggal_transaksi
 
 
 ------------------------------------
-SENIOR
+C
 --------------------------------
 #Load data from csv to mongodb
 http://localhost:8080/file/load
