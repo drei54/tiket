@@ -1,8 +1,8 @@
 ------------------------------------
 A
 --------------------------------
-/tiket-test/src/main/java/com/tiket/test/basic/SoalA.java
-/tiket-test/src/main/java/com/tiket/test/basic/SoalB.java
+/tiket/src/main/java/com/tiket/test/basic/SoalA.java
+/tiket/src/main/java/com/tiket/test/basic/SoalB.java
 
 ------------------------------------
 B
@@ -31,6 +31,7 @@ WHERE CONCAT(e.first_name,' ',e.last_name) = 'Adam Barr'
 GROUP BY c.customer_id;
 
 #Daftar produk yang dipesan oleh pelanggan Contoso, Ltd
+<pre>
 SELECT p.* 
 FROM `order_detail` od
 LEFT JOIN `order` o ON o.order_id = od.`order_id`
@@ -38,6 +39,7 @@ JOIN `customer` c ON c.customer_id = o.`customer_id`
 JOIN `product` p ON p.product_id = od.`product_id`
 WHERE c.company_name= 'Contoso, Ltd' 
 GROUP BY p.product_id;
+</pre>
 
 #Daftar transaksi pemesanan yang dikirimkan melalui UPS Ground
 SELECT o.* 
